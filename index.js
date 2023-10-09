@@ -41,17 +41,13 @@ const taskList = [
     }
 ]; 
 
-// declarar función nuevo contacto
+// CREAR CONTACTO
 
 function addContact(contact) {
     
     const {nombre, apellido, telefono, ubicacion} = contact;
-    // const nombre = contact.nombre;
-    // const apellido = contact.apellido;
-    // { nombre, apellido} = contact
     const lastElementId = taskList.length -1;
     const newId = taskList[lastElementId].id +1;
-
 
     taskList.push({
         id: newId,
@@ -62,28 +58,15 @@ function addContact(contact) {
     });
 };
 
-// borrar un contacto
+// BORRAR CONTACTO
 
 function deleteContact(id) {
-    // taskList.splice(id, 1);
     const index = taskList.map(task => task.id).indexOf(id);
     console.log("index", index);
     taskList.splice(index, 1);
 };
 
-function deleteContactByName(name) {
-    const index = taskList.indexOf(name);
-
-    index == -1 ? console.log("El contacto no existe") : taskList.splice(index, 1);
-
-    // if(index == -1){
-    //     console.log("El contacto no existe");
-    // } else {
-    //     taskList.splice(index, 1);
-    // }
-};
-
-// imprimir en consola los contacto presentes en la lista
+//MOSTRAR CONTACTO
 
 function showContacts() {
     console.log("*****LISTA DE CONTACTOS*****")
@@ -93,3 +76,9 @@ function showContacts() {
     });
 };
 
+//EDITAR CONTACTO
+
+function updateContact(contact) {
+    const index = taskList.map(task => task.id).indexOf(contact.id);
+    taskList.splice(index, 1, contact);
+}
